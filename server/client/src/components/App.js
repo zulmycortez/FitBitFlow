@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import HomePage from './HomePage';
+import Sleep from './Sleep';
+import HeartRate from './HeartRate';
+import Activity from './Activity'
 
 const App = () => {
   return (

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
-const Sleep = () => {
+const Activity = () => {
     return (
         <div>
-            Sleep
+            Activity
         </div>
     )
 }
 
-export default Sleep;
+export default Activity;

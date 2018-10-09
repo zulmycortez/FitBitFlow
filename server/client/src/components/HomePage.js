@@ -5,7 +5,7 @@ const HomePage = () => {
         <div className="home-page">
             <h3>Hello Zulmy</h3>
             <br />
-            <h7>Check out your:</h7>
+            <h5>Check out your:</h5>
             <br />
             <button>Sleep</button>
             <button>Heart Rate</button>
