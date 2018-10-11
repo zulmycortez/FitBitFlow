@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import './App.css';
 
+
 import HomePage from './HomePage';
 import Sleep from './Sleep';
 // import HeartRate from './HeartRate';

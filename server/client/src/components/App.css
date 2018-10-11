@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Text+Me+One');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel');
+
 
 #title {
     font-family: 'Text Me One', sans-serif;
@@ -17,6 +19,11 @@ body {
     text-align: center;
     font-size: 40px;
     color: white;
+}
+
+.icons {
+    font-family: 'Grand Hotel', cursive;
+    font-size: 25px;
 }
 
 .dot {
