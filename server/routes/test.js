@@ -95,5 +95,26 @@ app.get("/auth/callback/activity", (req, res) => {
 	});
 });
 
+//STEPS//
+app.get("/authorize/activity/steps", (req, res) => {
+	// request access to the user's activity, heartrate, profile, sleep  scopes
+	res.redirect(client.getAuthorizeUrl('activity heartrate profile sleep', 'http://localhost:3000/auth/callback/activity/steps'));
+});
+
+app.get("/auth/callback/activity/steps", (req, res) => {
+	// exchange the authorization code we just received for an access token
+	client.getAccessToken(req.query.code, 'http://localhost:3000/auth/callback/activity/steps').then(result => {
+		// use the access token to fetch the user's profile information
+		client.get("/activities/steps/date/today/1m.json", result.access_token).then(results => {
+			res.send(results[0]);
+		}).catch(err => {
+			res.status(err.status).send(err);
+		});
+	}).catch(err => {
+		res.status(err.status).send(err);
+	});
+});
+
+
 // launch the server
 app.listen(3000);

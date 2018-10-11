@@ -8,35 +8,38 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const fetchSleep = () => async dispatch => {
-  const res = await axios.get('http://localhost:3000/authorize/sleep');
-
-  dispatch ({ type: FETCH_SLEEP, payload: res.data});
+  let res = await axios.get('http://localhost:3000/authorize/sleep');
   const sleepArray = res.data.sleep.map(minutes => {
     return minutes.timeInBed;
 });
-  console.log(sleepArray);
+  dispatch ({ type: FETCH_SLEEP, payload: sleepArray});
 };
 
 export const fetchHeartRate = () => async dispatch => {
-  const res = await axios.get('http://localhost:3000/authorize/heartrate');
-
-  dispatch({ type: FETCH_HEARTRATE, payload: res.data });
-  console.log(res.data);
-
+  let res = await axios.get('http://localhost:3000/authorize/heartrate');
   const heartRateArray = res.data["activities-heart"].map(restingHR => {
-    return restingHR.restingHeartRate;
+    return restingHR.value.restingHeartRate;
   });
-  console.log(heartRateArray);
+  dispatch({ type: FETCH_HEARTRATE, payload: heartRateArray });
 };
 
 export const fetchActivity = () => async dispatch => {
-  const res = await axios.get('http://localhost:3000/authorize/activity');
-
-  dispatch({ type: FETCH_ACTIVITY, payload: res.data });
-  console.log(res.data);
-
+  let res = await axios.get('http://localhost:3000/authorize/activity');
   const activityArray = res.data["activities-calories"].map(caloriesOut => {
-    return caloriesOut.value;
+    return parseInt(caloriesOut.value);
   });
+  dispatch({ type: FETCH_ACTIVITY, payload: activityArray });
+
   console.log(activityArray);
+};
+
+export const fetchSteps = () => async dispatch => {
+  let res = await axios.get('http://localhost:3000/authorize/activity/steps');
+  const stepsArray = res.data["activities-steps"].map(caloriesOut => {
+    return parseInt(caloriesOut.value);
+  });
+  console.log(stepsArray);
+  dispatch({ type: FETCH_ACTIVITY, payload: stepsArray });
+
+  
 };

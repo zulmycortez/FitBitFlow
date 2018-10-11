@@ -1,32 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchSleep, fetchActivity, fetchHeartRate } from '../actions';
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import { fetchSleep, fetchActivity, fetchHeartRate } from '../actions';
+// import sleepRegression from './sleepRegression';
 
-class Sleep extends Component {
-    componentDidMount() {
-        this.props.fetchSleep();
-        this.props.fetchActivity();
-        this.props.fetchHeartRate();
-    }
+// export default (async function Sleep(values) {
+//     let inputData=[];
+//     inputData.push(values);
+//     sleepRegression(inputData);
+// });
 
-    renderSleep() {
-           
-    }
+// // class Sleep extends Component {
+ 
+// // }
 
-    render() {
-        console.log(this.renderSleep());
-        return (
-            <div>
-                {/* {this.renderSleep()} */}
-                <h5>Please select which area you're most interested in learning more about:</h5>
-            </div>
-        );
-    }
-}
-
-function mapStateToProps ({ sleep }) {
-    return { sleep }; 
-}
+// // function mapStateToProps ({ sleep }) {
+// //     return { sleep }; 
+// // }
 
 
-export default connect (mapStateToProps, { fetchSleep, fetchActivity, fetchHeartRate })(Sleep);
+// // export default connect (mapStateToProps, { fetchSleep, fetchActivity, fetchHeartRate })(Sleep);

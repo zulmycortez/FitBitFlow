@@ -8,5 +8,6 @@ export default combineReducers({
   auth: authReducer,
   sleep: sleepReducer,
   heartRate: heartRateReducer,
-  activity: activityReducer
+  activity: activityReducer,
+  steps: activityReducer
 });

@@ -6,7 +6,7 @@ import './App.css';
 
 
 import HomePage from './HomePage';
-import Sleep from './Sleep';
+import Sleep from './sleepRegression';
 // import HeartRate from './HeartRate';
 // import Activity from './Activity';
 

@@ -10,6 +10,22 @@
     color: white;
 }
 
+.left-hand-box {
+    background-color: white;
+    /* border-radius: 80%; */
+    width: 35%;
+    height: 100px;
+    padding: 20px 20px 20px 20px;
+    display: inline-block;
+
+}
+
+.sleep-title{
+    font-family: 'Text Me One', sans-serif;
+    text-align: center;
+    color: #83BAD4;
+
+}
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #132E3B;
@@ -19,11 +35,13 @@ body {
     text-align: center;
     font-size: 40px;
     color: white;
+    font-family: 'Text Me One', sans-serif;
+
 }
 
 .icons {
     font-family: 'Grand Hotel', cursive;
-    font-size: 25px;
+    font-size: 40px;
 }
 
 .dot {
@@ -32,12 +50,12 @@ body {
     background-color: #83BAD4;
     border-radius: 50%;
     display: inline-block;
+    padding: 10px 10px 10px 10px;
 }
 
 .hello {
     background-color: white;
     border-radius: 10px;
-
     padding: 10px 10px 10px 10px;
     text-align: center;
 }

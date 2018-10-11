@@ -18,8 +18,8 @@ class HomePage extends Component {
                         <h1 id="title">FitbitFlow</h1>
                             <div className="header">
                                 <ul>
-                                <li><strong>Average Daily Steps:</strong> {this.props.auth.user.averageDailySteps}</li>
-                                <li><strong>Member Since:</strong> {this.props.auth.user.memberSince}</li>
+                                <li>Average Daily Steps: {this.props.auth.user.averageDailySteps}</li>
+                                <li>Member Since: {this.props.auth.user.memberSince}</li>
                                 </ul>
                             </div>
                         <br />
@@ -30,15 +30,15 @@ class HomePage extends Component {
                    <div className="icons">
                    <span>
                        <p>Sleep</p>
-                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/ios-glyphs/50/000000/sleeping-in-bed.png"/></Link></p>
+                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/ios-glyphs/50/000000/sleeping-in-bed.png" alt="Sleeping analysis"/></Link></p>
                     </span>
                    <span>
                        <p>Calories Burned</p>
-                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/ios-glyphs/50/000000/gas.png"/></Link></p>
+                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/ios-glyphs/50/000000/gas.png" alt="Calories Burned analysis"/></Link></p>
                     </span>
                    <span>
                        <p>Resting Heart Rate</p>
-                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/windows/50/000000/heart-with-pulse.png"/></Link></p>
+                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/windows/50/000000/heart-with-pulse.png" alt="Heart rate analysis"/></Link></p>
                     </span>
                    </div>
                    </div>
@@ -59,7 +59,6 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log(this.props.auth.user)
         return (
             <div>
                 
@@ -70,7 +69,6 @@ class HomePage extends Component {
 }
 
 function mapStateToProps ({ auth }) {
-    console.log(auth);
     return { auth };
     
 }
