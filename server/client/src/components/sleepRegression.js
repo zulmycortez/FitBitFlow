@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {fetchSleep, fetchActivity, fetchSteps} from '../actions/index.js';
 import './App.css';
+import { scaleLinear, max, axisLeft, axisBottom, select } from "d3"
+import * as d3 from "d3";
 
 class Sleep extends Component {
     constructor(props) {
@@ -50,9 +52,7 @@ class Sleep extends Component {
                     Slope = {parseInt(lr.slope)}
                     R^2 = {lr.r2}
                 </div>
-                <div className="right-hand-box">
-                    
-                </div>
+                <div className="right-hand-box"></div>
             </div>
         );
     }   

@@ -7,6 +7,7 @@ import './App.css';
 
 import HomePage from './HomePage';
 import Sleep from './sleepRegression';
+import LinearGraph from './LinearGraph';
 // import HeartRate from './HeartRate';
 // import Activity from './Activity';
 
@@ -21,7 +22,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path="/home" component={HomePage} />
-            <Route exact path="/sleep" component={Sleep} />
+            <Route exact path="/sleep" component={LinearGraph} />
             {/* <Route exact path="/heartrate" component={HeartRate} />
             <Route exact path="/activity" component={Activity} /> */}
           </div>
