@@ -1,0 +1,19 @@
+{
+  "name": "fitbitflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zulmycortez/FitBitFlow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zulmycortez/FitBitFlow/issues"
+  },
+  "homepage": "https://github.com/zulmycortez/FitBitFlow#readme"
+}
