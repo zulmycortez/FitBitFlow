@@ -11,7 +11,7 @@ class Activity extends Component {
   }
 
   navigateToHomePage() {
-    this.props.history.push('/home');
+    this.props.history.push('/');
   }
 
   render() {

@@ -14,7 +14,7 @@ export default class ScatterPlotActivitySteps extends React.Component {
   render() {
     const margin = { top: 20, right: 15, bottom: 60, left: 60 }
     const width = 800 - margin.left - margin.right
-    const height = 600 - margin.top - margin.bottom
+    const height = 500 - margin.top - margin.bottom
     const data = this.props.data
     console.log(data);
     const x = scaleLinear()
@@ -101,7 +101,6 @@ class TrendLine extends React.Component {
     })
     const trendline = linearRegression(y_coords, x_coords)
 
-    // Lowest and highest x coordinates to draw a plot line
     const lowest_x = x_coords.sort(sortNumber)[0]
     const hightest_x = x_coords.sort(sortNumber)[x_coords.length - 1]
     const trendline_points = [
@@ -165,5 +164,4 @@ function linearRegression(y, x) {
     return lr.slope * x + lr.intercept
 
   }
-
 }

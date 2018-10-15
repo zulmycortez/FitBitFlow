@@ -1,16 +1,9 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_LOGOUT, FETCH_SLEEP, FETCH_HEARTRATE, FETCH_ACTIVITY } from './types';
+import { FETCH_USER, FETCH_SLEEP, FETCH_HEARTRATE, FETCH_ACTIVITY } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('http://localhost:3000/authorize/profile');
-
   dispatch({ type: FETCH_USER, payload: res.data });
-};
-
-export const fetchLogout = () => async dispatch => {
-  const res = await axios.get('http://localhost:3000/logout');
-
-  dispatch({ type: FETCH_LOGOUT, payload: res.data });
 };
 
 export const fetchSleep = () => async dispatch => {
@@ -36,7 +29,6 @@ export const fetchActivity = () => async dispatch => {
   });
   dispatch({ type: FETCH_ACTIVITY, payload: activityArray });
 
-  console.log(activityArray);
 };
 
 export const fetchSteps = () => async dispatch => {
@@ -44,8 +36,6 @@ export const fetchSteps = () => async dispatch => {
   const stepsArray = res.data["activities-steps"].map(caloriesOut => {
     return parseInt(caloriesOut.value);
   });
-  console.log(stepsArray);
   dispatch({ type: FETCH_ACTIVITY, payload: stepsArray });
-
   
 };

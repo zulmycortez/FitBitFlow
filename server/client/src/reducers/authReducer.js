@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_LOGOUT } from '../actions/types';
+import { FETCH_USER } from '../actions/types';
 
 export default function(state = {}, action) {
   
@@ -7,8 +7,5 @@ export default function(state = {}, action) {
       state = action.payload;
     default:
       return state;  
-    case FETCH_LOGOUT:
-      state = action.payload;
-
   }
 }

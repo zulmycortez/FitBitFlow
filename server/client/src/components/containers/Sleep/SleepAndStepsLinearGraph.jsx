@@ -49,12 +49,12 @@ newArray() {
     } else {
         return (
             <div className="loading">
-            <br />
-            Calculating large numbers...
-            <p><span className="dot"> </span>
-            <span className="dot"> </span>
-            <span className="dot"> </span>
-            <span className="dot"> </span></p>
+              <br />
+              Calculating large numbers...
+              <p><span className="dot"> </span>
+              <span className="dot"> </span>
+              <span className="dot"> </span>
+              <span className="dot"> </span></p>
             </div>
         )
       }

@@ -6,7 +6,7 @@ function sortNumber(a, b) {
   return a - b
 }
 
-export default class ScatterPlotSleepActivity extends React.Component {
+export default class ScatterPlotSleepSteps extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -14,12 +14,12 @@ export default class ScatterPlotSleepActivity extends React.Component {
   render() {
     const margin = { top: 20, right: 15, bottom: 60, left: 60 }
     const width = 800 - margin.left - margin.right
-    const height = 600 - margin.top - margin.bottom
+    const height = 500 - margin.top - margin.bottom
     const data = this.props.data
     console.log(data);
     const x = scaleLinear()
       .domain([
-        1700,
+        1250,
         max(data, function(d) {
           return d[0]
         })
@@ -36,8 +36,8 @@ export default class ScatterPlotSleepActivity extends React.Component {
       .range([height, 0])
     return (
       <div className="SleepStats">
-      <h2 className="ind-page-title">Linear Regression of Hours Slept vs. Calories Burned</h2>
-        <svg
+      <h2 className="ind-page-title">Linear Regression of Hours Slept vs. Steps Walked</h2>
+        <svg 
           viewBox="0 0 960 500"
           width={width + margin.right + margin.left}
           height={height + margin.top + margin.bottom}
@@ -52,7 +52,8 @@ export default class ScatterPlotSleepActivity extends React.Component {
             <RenderCircles data={data} scale={{ x, y }} />
             <TrendLine data={data} scale={{ x, y }} />
             <Axis
-              axis="x"
+              axis="x" name="steps"
+              text x="Steps"
               transform={"translate(0," + height + ")"}
               scale={axisBottom().scale(x)}
             />
@@ -61,12 +62,12 @@ export default class ScatterPlotSleepActivity extends React.Component {
               transform="translate(0,0)"
               scale={axisLeft().scale(y)}
             />
-          <text transform="rotate(-90)" y="6" dy="0.71em" textAnchor="end">
-            Sleep (hrs)
-          </text>
-          <text x="720" y="510" textAnchor="end" >
-            Calories Burned
-          </text>
+            <text transform="rotate(-90)" y="6" dy="0.71em" textAnchor="end">
+              Sleep (hrs)
+            </text>
+            <text x="720" y="510" textAnchor="end" >
+              Steps Walked
+            </text>
           </g>
         </svg>
         <SleepActivityRegressionFormula />
@@ -100,7 +101,6 @@ class TrendLine extends React.Component {
     })
     const trendline = linearRegression(y_coords, x_coords)
 
-    // Lowest and highest x coordinates to draw a plot line
     const lowest_x = x_coords.sort(sortNumber)[0]
     const hightest_x = x_coords.sort(sortNumber)[x_coords.length - 1]
     const trendline_points = [
@@ -129,6 +129,7 @@ class Axis extends React.Component {
   render() {
     return (
       <g
+        text="Steps"
         className="main axis date"
         transform={this.props.transform}
         ref={this.props.axis}
@@ -156,13 +157,11 @@ function linearRegression(y, x) {
 
   lr["slope"] = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x)
   lr["intercept"] = (sum_y - lr.slope * sum_x) / n
-  lr["r2"] = Math.pow(
-    (n * sum_xy - sum_x * sum_y) /
-      Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)),
-    2
-  )
-  console.log("int",lr.intercept, "slope",lr.slope,"r2",lr.r2);
+  lr["r2"] = Math.pow((n * sum_xy - sum_x * sum_y) /Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)),2)
+    
+    console.log("int",lr.intercept, "slope",lr.slope,"r2",lr.r2);
   return x => {
     return lr.slope * x + lr.intercept
+
   }
 }

@@ -22,8 +22,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            {/* <Route exact path="/" component={FitBitLogin} /> */}
-            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/" component={HomePage} />
             <Route exact path="/sleep" component={Sleep} />
             <Route exact path="/sleep/activity" component={SleepAndActivityLinearGraph} />
             <Route exact path="/sleep/steps" component={SleepAndStepsLinearGraph} />

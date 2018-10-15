@@ -13,7 +13,7 @@
 .SleepStats {
     background-color: white;
     border-radius: 10px;
-    padding: 30px 30px 30px 30px;
+    padding: 40px 40px 40px 40px;
     text-align: center;
     height: auto;
 }
@@ -43,6 +43,7 @@ svg {
 .ind-page-title {
     font-family: 'Text Me One', sans-serif;
     color: #132E3B;
+    text-align: center;
 }
 .sleep-title {
     font-family: 'Text Me One', sans-serif;
