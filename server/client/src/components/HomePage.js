@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import './App.css';
 
@@ -43,7 +43,11 @@ class HomePage extends Component {
                    </div>
                 </div>
                 <br />
-                    <button type="button" id="logout" class="btn btn-warning">Logout</button>
+                    <button 
+                    type="button" 
+                    id="logout" 
+                    class="btn btn-warning" 
+                    >Logout</button>
                     </div>
            )
         } else {
@@ -62,7 +66,6 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                
                 {this.renderGreeting()}
             </div>
         );
