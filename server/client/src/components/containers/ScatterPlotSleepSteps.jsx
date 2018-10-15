@@ -1,5 +1,6 @@
 import React from "react"
 import { scaleLinear, max, axisLeft, axisBottom, select } from "d3"
+import SleepStepRegressionFormula from './SleepStepRegressionFormula'
 
 function sortNumber(a, b) {
   return a - b
@@ -35,6 +36,7 @@ export default class ScatterPlotSleepSteps extends React.Component {
       .range([height, 0])
     return (
       <div className="SleepStats">
+      <SleepStepRegressionFormula />
       <h2>Linear Regression of Hours Slept vs. Steps Walked</h2>
         <svg 
           viewBox="0 0 960 500"
@@ -51,7 +53,8 @@ export default class ScatterPlotSleepSteps extends React.Component {
             <RenderCircles data={data} scale={{ x, y }} />
             <TrendLine data={data} scale={{ x, y }} />
             <Axis
-              axis="x"
+              axis="x" name="steps"
+              text x="Steps"
               transform={"translate(0," + height + ")"}
               scale={axisBottom().scale(x)}
             />
@@ -121,6 +124,7 @@ class Axis extends React.Component {
   render() {
     return (
       <g
+        text="Steps"
         className="main axis date"
         transform={this.props.transform}
         ref={this.props.axis}

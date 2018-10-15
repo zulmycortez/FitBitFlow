@@ -27,7 +27,6 @@ newArray() {
 }
   render() {
     if(this.props.sleep.length > 0 && this.props.steps.length > 0) {
-
       return (
         <div className="main-container">
           <h1 id="title">FitbitFlow</h1>

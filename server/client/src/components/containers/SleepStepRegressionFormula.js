@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchSleep, fetchActivity, fetchSteps} from '../actions/index.js';
+import {fetchSleep, fetchSteps} from '../../actions/index.js';
 import './App.css';
-import { scaleLinear, max, axisLeft, axisBottom, select } from "d3"
-import * as d3 from "d3";
 
-class Sleep extends Component {
+class SleepStepRegressionFormula extends Component {
     constructor(props) {
         super(props)
     }
@@ -49,8 +47,9 @@ class Sleep extends Component {
             <div>
                 <h2 className="sleep-title">Sleep Statistics</h2>
                 <div className="left-hand-box">
-                    Slope = {parseInt(lr.slope)}
-                    R^2 = {lr.r2}
+                    <p>Y-Intercept = {parseFloat(lr.intercept).toFixed(3)}</p>
+                    <p>Slope = {parseFloat(lr.slope).toFixed(3)}</p>
+                    <p>R^2 = {parseFloat(lr.r2).toFixed(3)}</p>
                 </div>
                 <div className="right-hand-box"></div>
             </div>
@@ -58,8 +57,8 @@ class Sleep extends Component {
     }   
 }
 
-function mapStateToProps ({ sleep, activity, steps }) {
+function mapStateToProps ({ sleep, steps }) {
     return { sleep, steps };
 }
 
-export default connect (mapStateToProps, { fetchSleep, fetchSteps })(Sleep);
+export default connect (mapStateToProps, { fetchSleep, fetchSteps })(SleepStepRegressionFormula);
