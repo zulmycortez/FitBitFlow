@@ -1,12 +1,18 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux';
 import ScatterPlotSleepSteps from "./ScatterPlotSleepSteps"
-import {fetchSleep, fetchSteps} from '../../actions';
+import {fetchSleep, fetchSteps} from '../../../actions';
+import { Button } from "react-bootstrap";
 
 class SleepAndStepsLinearGraph extends Component {
   constructor(props) {
     super(props)
-}
+    this.navigateToHomePage = this.navigateToHomePage.bind(this);
+  }
+
+  navigateToHomePage() {
+    this.props.history.push('/sleep');
+  }
 
 componentDidMount() {
     this.props.fetchSleep();
@@ -14,12 +20,12 @@ componentDidMount() {
 }
 
 newArray() {
-  var y = this.props.sleep;
-  var x = this.props.steps;
+  var y = this.props.steps;
+  var x = this.props.sleep;
   let combined = [];
 
   for(let i = 0; i < y.length; i++) {
-    combined.push( [ y[i]/60, x[i] ] );
+    combined.push( [ y[i], x[i]/60 ] );
   }
 
   return combined;
@@ -29,6 +35,12 @@ newArray() {
     if(this.props.sleep.length > 0 && this.props.steps.length > 0) {
       return (
         <div className="main-container">
+              <Button 
+              bsStyle="danger"
+              id="back-btn"
+              onClick={this.navigateToHomePage}>
+              Back
+            </Button>
           <h1 id="title">FitbitFlow</h1>
           <ScatterPlotSleepSteps data={this.newArray()} />
        </div>
@@ -38,7 +50,7 @@ newArray() {
         return (
             <div className="loading">
             <br />
-            Calculating large numbers please be patient...
+            Calculating large numbers...
             <p><span className="dot"> </span>
             <span className="dot"> </span>
             <span className="dot"> </span>

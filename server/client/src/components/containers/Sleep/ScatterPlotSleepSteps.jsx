@@ -19,7 +19,7 @@ export default class ScatterPlotSleepSteps extends React.Component {
     console.log(data);
     const x = scaleLinear()
       .domain([
-        5,
+        2800,
         max(data, function(d) {
           return d[0]
         })
@@ -28,7 +28,7 @@ export default class ScatterPlotSleepSteps extends React.Component {
 
     const y = scaleLinear()
       .domain([
-        2000,
+        5,
         max(data, function(d) {
           return d[1]
         })
@@ -36,8 +36,7 @@ export default class ScatterPlotSleepSteps extends React.Component {
       .range([height, 0])
     return (
       <div className="SleepStats">
-      <SleepStepRegressionFormula />
-      <h2>Linear Regression of Hours Slept vs. Steps Walked</h2>
+      <h2 className="ind-page-title">Linear Regression of Hours Slept vs. Steps Walked</h2>
         <svg 
           viewBox="0 0 960 500"
           width={width + margin.right + margin.left}
@@ -63,8 +62,15 @@ export default class ScatterPlotSleepSteps extends React.Component {
               transform="translate(0,0)"
               scale={axisLeft().scale(y)}
             />
+          <text transform="rotate(-90)" y="6" dy="0.71em" textAnchor="end">
+            Sleep (hrs)
+          </text>
+          <text x="720" y="510" textAnchor="end" >
+            Steps Walked
+          </text>
           </g>
         </svg>
+        <SleepStepRegressionFormula />
       </div>
     )
   }
@@ -152,13 +158,12 @@ function linearRegression(y, x) {
 
   lr["slope"] = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x)
   lr["intercept"] = (sum_y - lr.slope * sum_x) / n
-  lr["r2"] = Math.pow(
-    (n * sum_xy - sum_x * sum_y) /
-      Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)),
-    2
-  )
-
+  lr["r2"] = Math.pow((n * sum_xy - sum_x * sum_y) /Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)),2)
+    
+    console.log("int",lr.intercept, "slope",lr.slope,"r2",lr.r2);
   return x => {
     return lr.slope * x + lr.intercept
+
   }
+
 }

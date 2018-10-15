@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-class Sleep extends Component {
+class Activity extends Component {
   constructor(props) {
     super(props);
     this.navigateToHomePage = this.navigateToHomePage.bind(this);
@@ -16,37 +16,32 @@ class Sleep extends Component {
 
   render() {
     return (
-      <div>
       <div className="main-container">
-      <br />
-      <br />
           <h1 id="title">FitbitFlow</h1>
           <div className="hello">
-            <Button 
+          <Button 
               bsStyle="danger"
               id="back-btn"
               onClick={this.navigateToHomePage}>
               Back
             </Button>
               <div className="hello" style={wellStyles}>
-              <Link to={`/sleep/steps`}>
+              <Link to={`/activity/steps`}>
               <Button bsStyle="primary" bsSize="large" block >
-                  Hours Slept v. Steps Walked
+                  Calories Burned and Steps Walked
                 </Button>
                 </Link>
                 <br />
-                <Link to={`/sleep/activity`}>
+                <Link to={`/activity/heartrate`}>
                 <Button bsStyle="primary" bsSize="large" block >
-                  Hours Slept v. Calories Burned
+                  Calories Burned and Resting Heart Rate
                 </Button>
                 </Link>
               </div>
           </div>
       </div>
-      <br />
-       </div>
     );
   }
 }
 
-export default Sleep;
+export default Activity;

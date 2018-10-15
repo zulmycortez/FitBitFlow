@@ -13,6 +13,7 @@ class HomePage extends Component {
     renderGreeting() {
         if(this.props.auth && this.props.auth.user) {
             return (
+                <div>
                 <div className="main-container">
                     <div className="">
                         <h1 id="title">FitbitFlow</h1>
@@ -36,15 +37,14 @@ class HomePage extends Component {
                     </span>
                    <span>
                        <p>Calories Burned</p>
-                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/ios-glyphs/50/000000/gas.png" alt="Calories Burned analysis"/></Link></p>
-                    </span>
-                   <span>
-                       <p>Resting Heart Rate</p>
-                       <p><Link to ={`/sleep`}><img src="https://png.icons8.com/windows/50/000000/heart-with-pulse.png" alt="Heart rate analysis"/></Link></p>
+                       <p><Link to ={`/activity`}><img src="https://png.icons8.com/ios-glyphs/50/000000/gas.png" alt="Calories Burned analysis"/></Link></p>
                     </span>
                    </div>
                    </div>
                 </div>
+                <br />
+                    <button type="button" id="logout" class="btn btn-warning">Logout</button>
+                    </div>
            )
         } else {
             return (

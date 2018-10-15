@@ -6,8 +6,11 @@ import './App.css';
 
 import HomePage from './HomePage';
 import Sleep from './Sleep';
-import SleepAndActivityLinearGraph from './containers/SleepAndActivityLinearGraph'
-import SleepAndStepsLinearGraph from './containers/SleepAndStepsLinearGraph'
+import SleepAndActivityLinearGraph from './containers/Sleep/SleepAndActivityLinearGraph'
+import SleepAndStepsLinearGraph from './containers/Sleep/SleepAndStepsLinearGraph'
+import Activity from './Activity';
+import ActivityAndStepsLinearGraph from './containers/Activity/ActivityAndStepsLinearGraph'
+import ActivityAndHeartRateLinearGraph from './containers/Activity/ActivityAndHeartRateLinearGraph'
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +26,9 @@ class App extends Component {
             <Route exact path="/sleep" component={Sleep} />
             <Route exact path="/sleep/activity" component={SleepAndActivityLinearGraph} />
             <Route exact path="/sleep/steps" component={SleepAndStepsLinearGraph} />
+            <Route exact path="/activity" component={Activity} />
+            <Route exact path="/activity/steps" component={ActivityAndStepsLinearGraph} />
+            <Route exact path="/activity/heartrate" component={ActivityAndHeartRateLinearGraph} />
           </div>
         </BrowserRouter>
       </div>

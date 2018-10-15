@@ -1,11 +1,12 @@
 import React from "react"
 import { scaleLinear, max, axisLeft, axisBottom, select } from "d3"
+import ActivityStepRegressionFormula from './ActivityAndStepsRegressionFormula'
 
 function sortNumber(a, b) {
   return a - b
 }
 
-export default class ScatterPlotSleepActivity extends React.Component {
+export default class ScatterPlotActivitySteps extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -18,7 +19,7 @@ export default class ScatterPlotSleepActivity extends React.Component {
     console.log(data);
     const x = scaleLinear()
       .domain([
-        0,
+        800,
         max(data, function(d) {
           return d[0]
         })
@@ -35,8 +36,9 @@ export default class ScatterPlotSleepActivity extends React.Component {
       .range([height, 0])
     return (
       <div className="SleepStats">
-        <h2 className="sleep-title">Sleep Statistics</h2>
-        <svg
+      <h2 className="ind-page-title">Linear Regression of Calories Burned vs. Steps Walked</h2>
+        <svg 
+          viewBox="0 0 960 500"
           width={width + margin.right + margin.left}
           height={height + margin.top + margin.bottom}
           className="chart"
@@ -50,7 +52,8 @@ export default class ScatterPlotSleepActivity extends React.Component {
             <RenderCircles data={data} scale={{ x, y }} />
             <TrendLine data={data} scale={{ x, y }} />
             <Axis
-              axis="x"
+              axis="x" name="steps"
+              text x="Steps"
               transform={"translate(0," + height + ")"}
               scale={axisBottom().scale(x)}
             />
@@ -59,8 +62,15 @@ export default class ScatterPlotSleepActivity extends React.Component {
               transform="translate(0,0)"
               scale={axisLeft().scale(y)}
             />
+          <text transform="rotate(-90)" y="6" dy="0.71em" textAnchor="end">
+            Calories Burned
+          </text>
+          <text x="720" y="510" textAnchor="end" >
+            Steps Walked
+          </text>
           </g>
         </svg>
+        <ActivityStepRegressionFormula />
       </div>
     )
   }
@@ -120,6 +130,7 @@ class Axis extends React.Component {
   render() {
     return (
       <g
+        text="Steps"
         className="main axis date"
         transform={this.props.transform}
         ref={this.props.axis}
@@ -147,13 +158,12 @@ function linearRegression(y, x) {
 
   lr["slope"] = (n * sum_xy - sum_x * sum_y) / (n * sum_xx - sum_x * sum_x)
   lr["intercept"] = (sum_y - lr.slope * sum_x) / n
-  lr["r2"] = Math.pow(
-    (n * sum_xy - sum_x * sum_y) /
-      Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)),
-    2
-  )
-
+  lr["r2"] = Math.pow((n * sum_xy - sum_x * sum_y) /Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)),2)
+    
+    console.log("int",lr.intercept, "slope",lr.slope,"r2",lr.r2);
   return x => {
     return lr.slope * x + lr.intercept
+
   }
+
 }
