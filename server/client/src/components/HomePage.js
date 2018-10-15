@@ -26,10 +26,12 @@ class HomePage extends Component {
                     </div>
                     <div className="hello">
                     <h2>Hello {this.props.auth.user.firstName},</h2>
-                   <h5>Please select which area you're most interested in learning more about:</h5>
+                    <i>This application uses linear regression, a statistical technique. It assess how successfully a <b>predictive variable</b> does its job in predicting the <b>outcome variable</b>.</i>
+                   <p>Please select which <b>outcome variable</b> you're most interested in learning more about:</p>
+                   
                    <div className="icons">
                    <span>
-                       <p>Sleep</p>
+                       Sleep
                        <p><Link to ={`/sleep`}><img src="https://png.icons8.com/ios-glyphs/50/000000/sleeping-in-bed.png" alt="Sleeping analysis"/></Link></p>
                     </span>
                    <span>
@@ -57,7 +59,6 @@ class HomePage extends Component {
             )
         }
     }
-
     render() {
         return (
             <div>
@@ -67,11 +68,8 @@ class HomePage extends Component {
         );
     }
 }
-
 function mapStateToProps ({ auth }) {
     return { auth };
     
 }
-
-
 export default connect (mapStateToProps, { fetchUser })(HomePage);

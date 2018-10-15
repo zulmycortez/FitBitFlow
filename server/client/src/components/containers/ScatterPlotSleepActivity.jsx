@@ -5,7 +5,7 @@ function sortNumber(a, b) {
   return a - b
 }
 
-export default class ScatterPlot extends React.Component {
+export default class ScatterPlotSleepActivity extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -33,10 +33,9 @@ export default class ScatterPlot extends React.Component {
         })
       ])
       .range([height, 0])
-
     return (
-      <div>
-        <h3> Scatter Plot with Trend Line </h3>
+      <div className="SleepStats">
+        <h2 className="sleep-title">Sleep Statistics</h2>
         <svg
           width={width + margin.right + margin.left}
           height={height + margin.top + margin.bottom}
@@ -155,8 +154,6 @@ function linearRegression(y, x) {
   )
 
   return x => {
-    console.log(lr.slope * x, lr.intercept);
-
     return lr.slope * x + lr.intercept
   }
 }

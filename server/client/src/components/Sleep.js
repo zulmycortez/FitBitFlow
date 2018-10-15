@@ -1,21 +1,46 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { fetchSleep, fetchActivity, fetchHeartRate } from '../actions';
-// import sleepRegression from './sleepRegression';
+import React, { Component } from "react";
+import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router'
+import { Button } from "react-bootstrap";
 
-// export default (async function Sleep(values) {
-//     let inputData=[];
-//     inputData.push(values);
-//     sleepRegression(inputData);
-// });
+const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-// // class Sleep extends Component {
- 
-// // }
+class Sleep extends Component {
+  constructor(props) {
+    super(props);
+    this.navigateToHomePage = this.navigateToHomePage.bind(this);
+  }
 
-// // function mapStateToProps ({ sleep }) {
-// //     return { sleep }; 
-// // }
+  navigateToHomePage() {
+    this.props.history.push('/home');
+  }
 
+  render() {
+    return (
+      <div className="main-container">
+          <h1 id="title">FitbitFlow</h1>
+          <div className="hello">
+            <Button 
+              bsStyle="danger"
+              onClick={this.navigateToHomePage}>
+              Back to Home Page
+            </Button>
+              <div className="well" style={wellStyles}>
+              <Link to={`/sleep/steps`}>
+              <Button bsStyle="primary" bsSize="large" block >
+                  Hours Slept and Steps Walked
+                </Button>
+                </Link>
+                <Link to={`/sleep/activity`}>
+                <Button bsStyle="primary" Link={`/sleep/activity`} bsSize="large" block >
+                  Hours Slept and Calories Burned
+                </Button>
+                </Link>
+              </div>
+          </div>
+      </div>
+    );
+  }
+}
 
-// // export default connect (mapStateToProps, { fetchSleep, fetchActivity, fetchHeartRate })(Sleep);
+export default Sleep;

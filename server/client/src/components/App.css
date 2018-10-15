@@ -10,14 +10,16 @@
     color: white;
 }
 
-.left-hand-box {
+.SleepStats {
     background-color: white;
-    /* border-radius: 80%; */
-    width: 35%;
-    height: 100px;
-    padding: 20px 20px 20px 20px;
-    display: inline-block;
+    border-radius: 10px;
+    padding: 30px 30px 30px 30px;
+    text-align: center;
+}
 
+svg {
+    max-width: 100%;
+    min-width: 100%;  
 }
 
 .sleep-title {
@@ -40,8 +42,12 @@ body {
 }
 
 .icons {
-    font-family: 'Grand Hotel', cursive;
-    font-size: 40px;
+    font-family: 'Text Me One', sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: black;
+    border: 1px;
+
 }
 
 .dot {
@@ -70,9 +76,12 @@ ul {
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
+    .SleepStats {
 
-.header {
-  float: none;
-}
+    }
+
+    /* .chart {
+        max-width:80;
+    } */
 }

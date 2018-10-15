@@ -1,11 +1,9 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux';
+import ScatterPlotSleepSteps from "./ScatterPlotSleepSteps"
+import {fetchSleep, fetchSteps} from '../../actions';
 
-import ScatterPlot from "./ScatterPlot"
-import {fetchSleep, fetchActivity, fetchSteps} from '../actions/index.js';
-
-
-class LinearGraph extends Component {
+class SleepAndStepsLinearGraph extends Component {
   constructor(props) {
     super(props)
 }
@@ -28,7 +26,7 @@ newArray() {
 
 }
   render() {
-    return <ScatterPlot data={this.newArray()} />
+    return <ScatterPlotSleepSteps data={this.newArray()} />
   }
 }
 
@@ -36,4 +34,4 @@ function mapStateToProps ({ sleep, steps }) {
   return { sleep, steps };
 }
 
-export default connect (mapStateToProps, { fetchSleep, fetchSteps })(LinearGraph);
+export default connect (mapStateToProps, { fetchSleep, fetchSteps })(SleepAndStepsLinearGraph);
